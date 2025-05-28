@@ -3,7 +3,7 @@ services:
     image: agnohq/pgvector:16
     restart: unless-stopped
     ports:
-      - "5432:5432"
+      - "5401:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     environment:
@@ -21,7 +21,7 @@ services:
     command: uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
     restart: unless-stopped
     ports:
-      - "8000:8000"
+      - "7000:8000"
     volumes:
       - .:/app
     environment:
@@ -29,7 +29,7 @@ services:
       # AGNO_MONITOR: "True"
       # AGNO_API_KEY: ${AGNO_API_KEY}
       DB_HOST: pgvector
-      DB_PORT: 5432
+      DB_PORT: 5401
       DB_USER: ${DB_USER:-ai}
       DB_PASS: ${DB_PASSWORD:-ai}
       DB_DATABASE: ${DB_NAME:-ai}
