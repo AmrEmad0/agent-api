@@ -19,6 +19,9 @@ RUN uv pip sync requirements.txt --system
 # Copy project files
 COPY . .
 
+# Make the entrypoint script executable
+RUN chmod +x /app/scripts/entrypoint.sh
+
 # Set permissions for the /app directory
 RUN chown -R ${USER}:${USER} ${APP_DIR}
 
@@ -26,6 +29,4 @@ RUN chown -R ${USER}:${USER} ${APP_DIR}
 USER ${USER}
 
 ENTRYPOINT ["/app/scripts/entrypoint.sh"]
-
-
 CMD ["chill"]
