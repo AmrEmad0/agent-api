@@ -25,5 +25,5 @@ RUN chown -R ${USER}:${USER} ${APP_DIR}
 # Switch to non-root user
 USER ${USER}
 
-ENTRYPOINT ["/app/scripts/entrypoint.sh"]
+ENTRYPOINT ["/scripts/entrypoint.sh"]
 CMD ["chill"]
