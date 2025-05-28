@@ -19,6 +19,14 @@ RUN uv pip sync requirements.txt --system
 # Copy project files
 COPY . .
 
+# Debug: Show what was copied
+RUN echo "=== Files in /app ===" && \
+    find /app -type f -name "*.sh" && \
+    echo "=== Contents of scripts directory ===" && \
+    ls -la /app/scripts/ && \
+    echo "=== Checking entrypoint.sh ===" && \
+    ls -la /app/scripts/entrypoint.sh
+
 # Make the entrypoint script executable
 RUN chmod +x /app/scripts/entrypoint.sh
 
